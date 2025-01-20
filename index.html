@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Googleログインデモ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div id="app" class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">Googleログインデモ</h1>
+        <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg p-6">
+            <div id="loginStatus" class="text-center">
+                <button id="loginButton" onclick="handleAuthClick()" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200">
+                    Googleでログイン
+                </button>
+            </div>
+            <div id="loginMessage" class="hidden mb-4 p-4 bg-green-100 text-green-700 rounded-lg">
+                ログインに成功しました！
+            </div>
+            <div id="userInfo" class="hidden">
+                <h2 class="text-xl font-semibold text-gray-700 mb-4">ユーザー情報</h2>
+                <pre id="userInfoContent" class="bg-gray-50 p-4 rounded-lg text-sm text-gray-600 overflow-auto mb-4"></pre>
+                <div class="text-center">
+                    <button onclick="handleSignoutClick()" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200">
+                        ログアウト
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load our authentication script first -->
+    <script src="auth.js"></script>
+    <!-- Load the Google API client library with callbacks -->
+    <script src="https://apis.google.com/js/api.js" onload="gapiLoaded()" onerror="console.error('Failed to load GAPI')"></script>
+    <script src="https://accounts.google.com/gsi/client" onload="gisLoaded()" onerror="console.error('Failed to load GSI')"></script>
+</body>
+</html>
